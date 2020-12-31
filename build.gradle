@@ -1,19 +1,51 @@
 plugins {
     id 'java'
+    id 'com.github.johnrengelman.shadow' version '5.2.0'
 }
 
-group 'org.example'
-version '1.0-SNAPSHOT'
+apply plugin: 'java'
+apply plugin: 'com.github.johnrengelman.shadow'
+
+shadowJar{
+    archiveClassifier.set('')
+}
 
 repositories {
     mavenCentral()
+    jcenter()
+    maven { url = 'https://hub.spigotmc.org/nexus/content/repositories/snapshots' }
+    maven { url = 'https://oss.sonatype.org/content/repositories/snapshots' }
+    maven { url = 'https://repo.dmulloy2.net/nexus/repository/public' }
+    maven { url = 'https://masecla.dev/nexus/repository/maven-snapshots' }
+    maven { url = 'https://jitpack.io' }
+}
+
+compileJava.options.encoding = 'UTF-8'
+
+jar {
+    manifest {
+        attributes "Main-Class": "fr.milekat.MCPG_Core.MainCore"
+    }
+    from {
+        configurations.compile.collect { it.isDirectory() ? it : zipTree(it) }
+    }
 }
 
 dependencies {
-    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.6.0'
-    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine'
-}
-
-test {
-    useJUnitPlatform()
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+    //  Google dependencies
+    compile group: 'com.googlecode.json-simple', name: 'json-simple', version: '1.1'
+    compile group: 'commons-io', name: 'commons-io', version: '2.6'
+    //  DB dependencies
+    compile group: 'redis.clients', name: 'jedis', version: '3.2.0'
+    compile group: 'org.mongodb', name: 'mongo-java-driver', version: '3.4.2'
+    compile group: 'org.mongodb.morphia', name: 'morphia', version: '1.3.2'
+    //  Official Minecraft dependencies
+    compileOnly group: 'org.spigotmc', name: 'spigot-api', version: '1.16.4-R0.1-SNAPSHOT'
+    //  Public Minecraft dependencies
+    compile group: 'xyz.upperlevel.spigot.book', name: 'spigot-book-api', version: '1.3'
+    compile group: 'com.github.MrMicky-FR', name: 'FastInv', version: '99ef96d91e'
+    compile group: 'net.jitse', name: 'npclib-api', version: '2.11.1-SNAPSHOT'
+    compile group: 'masecla', name: 'VillagerGUIApi', version: '0.0.1-20200910.053224-4'
+    compileOnly group: 'com.comphenix.protocol', name: 'ProtocolLib', version: '4.5.1'
 }
