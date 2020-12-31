@@ -1,7 +1,7 @@
 package fr.milekat.MCPG_Core.utils;
 
 public class CmdUtils {
-    public String getArgs(Integer skipedargs, String... args) {
+    public static String getArgs(Integer skipedargs, String... args) {
         StringBuilder sb = new StringBuilder();
         int loop = 1;
         for (String string : args) {
