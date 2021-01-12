@@ -5,11 +5,12 @@ public class CmdUtils {
         StringBuilder sb = new StringBuilder();
         int loop = 1;
         for (String string : args) {
-            if (loop < skipedargs) continue;
+            if (loop <= skipedargs) continue;
             sb.append(string);
             sb.append(" ");
             loop++;
         }
         return sb.toString();
     }
+
 }

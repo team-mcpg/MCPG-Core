@@ -27,7 +27,9 @@ public class MainCore extends JavaPlugin {
         // JSON config file load
         setJsonConfig();
         //  Load all connections
-        new ConnectionsLoad(this, mongoDB, mariaDB);
+        mongoDB = ConnectionsLoad.getMongoDBConnections();
+        mariaDB = ConnectionsLoad.getMariaDBConnections();
+        mariaDB.connection();
         //  Enable NPCLib API
         library = new NPCLib(this);
     }

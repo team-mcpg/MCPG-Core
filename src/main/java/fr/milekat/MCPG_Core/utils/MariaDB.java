@@ -10,9 +10,9 @@ import java.sql.SQLException;
 public class MariaDB {
     private Connection connection;
     private final String driver,url,host,database,user,pass;
-    private final Integer port;
+    private final Long port;
 
-    public MariaDB(String driver, String url, String host, Integer port, String database, String user, String pass){
+    public MariaDB(String driver, String url, String host, Long port, String database, String user, String pass){
         this.driver = driver;
         this.url = url;
         this.host = host;
@@ -30,13 +30,13 @@ public class MariaDB {
             Class.forName(this.driver);
             connection = DriverManager.getConnection(url + host + ":" + port + "/" + database +
                     "?autoReconnect=true&allowMultiQueries=true&characterEncoding=UTF-8", user, pass);
-            Bukkit.getLogger().info(MainCore.prefix + "SQL connected !");
+            Bukkit.getLogger().info(MainCore.prefix + "MariaDB connected !");
         } catch (SQLException e) {
             e.printStackTrace();
-            Bukkit.getLogger().warning(MainCore.prefix + "SQL error.");
+            Bukkit.getLogger().warning(MainCore.prefix + "MariaDB error.");
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
-            Bukkit.getLogger().warning(MainCore.prefix + "SQL class error.");
+            Bukkit.getLogger().warning(MainCore.prefix + "MariaDB class error.");
         }
     }
 
@@ -46,10 +46,10 @@ public class MariaDB {
     public void disconnect(){
         try {
             connection.close();
-            Bukkit.getLogger().warning(MainCore.prefix + "SQL disconnected !");
+            Bukkit.getLogger().warning(MainCore.prefix + "MariaDB disconnected !");
         } catch (SQLException e) {
             e.printStackTrace();
-            Bukkit.getLogger().warning(MainCore.prefix + "SQL error.");
+            Bukkit.getLogger().warning(MainCore.prefix + "MariaDB error.");
         }
     }
 

@@ -1,4 +1,6 @@
 name: MCPG-Core
 main: fr.milekat.MCPG_Core.MainCore
 version: 1.0
-depend: [ProtocolLib, NPCLibPlugin, VillagerGUIApi]
+author: MileKat
+depend: [VillagerGUIApi, NPCLibPlugin]
+softdepend: [ProtocolLib]
