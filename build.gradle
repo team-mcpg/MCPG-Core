@@ -49,4 +49,8 @@ dependencies {
     compileOnly group: 'net.jitse', name: 'npclib-api', version: '2.11.1-SNAPSHOT'
     compileOnly group: 'masecla', name: 'VillagerGUIApi', version: '0.0.1-SNAPSHOT'
     compileOnly group: 'com.comphenix.protocol', name: 'ProtocolLib', version: '4.5.1'
+
+    //  Test
+    compile group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.12.1'
+    compile group: 'org.mongojack', name: 'mongojack', version: '4.0.2'
 }
