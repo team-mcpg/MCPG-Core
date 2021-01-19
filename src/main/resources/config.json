@@ -1,20 +1,9 @@
 {
-  "redis": {
-    "host": "172.18.0.1",
-    "auth": "LOGIN"
-  },
   "SQL": {
     "driver": "com.mysql.jdbc.Driver",
     "url": "jdbc:mysql://",
     "host": "localhost",
     "port": 3306,
-    "db": "minecraft",
-    "user": "minecraft",
-    "mdp": "LOGIN"
-  },
-  "MongoDB": {
-    "host": "localhost",
-    "port": 27017,
     "db": "minecraft",
     "user": "minecraft",
     "mdp": "LOGIN"

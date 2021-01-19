@@ -1,9 +1,7 @@
 package fr.milekat.MCPG_Core;
 
-import fr.milekat.MCPG_Core.utils.ConnectionsLoad;
-import fr.milekat.MCPG_Core.utils.MariaDB;
-import fr.milekat.MCPG_Core.utils.MongoDB;
-import net.jitse.npclib.NPCLib;
+import fr.milekat.MCPG_Core.db.ConnectionsLoad;
+import fr.milekat.MCPG_Core.db.MariaDB;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.json.simple.JSONObject;
@@ -16,27 +14,22 @@ import java.sql.Connection;
 
 public class MainCore extends JavaPlugin {
     private static JSONObject configRoot;
-    private static NPCLib library;
-    private static MongoDB mongoDB;
     private static MariaDB mariaDB;
 
-    public static String prefix = "[MCPG-Core] ";
+    public static String prefix = "[MCPG] ";
 
     @Override
     public void onEnable() {
         // JSON config file load
         setJsonConfig();
-        //  Load all connections
-        mongoDB = ConnectionsLoad.getMongoDBConnections();
+        //  Load db connections
         mariaDB = ConnectionsLoad.getMariaDBConnections();
-        mariaDB.connection();
-        //  Enable NPCLib API
-        library = new NPCLib(this);
+        if (mariaDB!=null) mariaDB.connection();
     }
 
     @Override
     public void onDisable() {
-
+        mariaDB.disconnect();
     }
 
     private void setJsonConfig() {
@@ -48,10 +41,6 @@ public class MainCore extends JavaPlugin {
     }
 
     public static JSONObject getJsonConfig(){ return configRoot; }
-
-    public static NPCLib getNPCLib() { return library; }
-
-    public static MongoDB getMongoDB() { return mongoDB; }
 
     public static Connection getSql() { return mariaDB.getConnection(); }
 }

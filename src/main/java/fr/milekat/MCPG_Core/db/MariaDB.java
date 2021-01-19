@@ -1,4 +1,4 @@
-package fr.milekat.MCPG_Core.utils;
+package fr.milekat.MCPG_Core.db;
 
 import fr.milekat.MCPG_Core.MainCore;
 import org.bukkit.Bukkit;
@@ -55,7 +55,7 @@ public class MariaDB {
 
     /**
      *      Retourne la connection pour initialiser un PreparedStatement
-     * @return connection
+     *      @return connection
      */
     public Connection getConnection(){
         return connection;
