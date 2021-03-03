@@ -30,13 +30,13 @@ public class MariaDB {
             Class.forName(this.driver);
             connection = DriverManager.getConnection(url + host + ":" + port + "/" + database +
                     "?autoReconnect=true&allowMultiQueries=true&characterEncoding=UTF-8", user, pass);
-            Bukkit.getLogger().info(MainCore.prefix + "MariaDB connected !");
+            Bukkit.getLogger().info(MainCore.PREFIX + "MariaDB connected !");
         } catch (SQLException e) {
             e.printStackTrace();
-            Bukkit.getLogger().warning(MainCore.prefix + "MariaDB error.");
+            Bukkit.getLogger().warning(MainCore.PREFIX + "MariaDB error.");
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
-            Bukkit.getLogger().warning(MainCore.prefix + "MariaDB class error.");
+            Bukkit.getLogger().warning(MainCore.PREFIX + "MariaDB class error.");
         }
     }
 
@@ -46,10 +46,10 @@ public class MariaDB {
     public void disconnect(){
         try {
             connection.close();
-            Bukkit.getLogger().warning(MainCore.prefix + "MariaDB disconnected !");
+            Bukkit.getLogger().warning(MainCore.PREFIX + "MariaDB disconnected !");
         } catch (SQLException e) {
             e.printStackTrace();
-            Bukkit.getLogger().warning(MainCore.prefix + "MariaDB error.");
+            Bukkit.getLogger().warning(MainCore.PREFIX + "MariaDB error.");
         }
     }
 

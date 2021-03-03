@@ -18,7 +18,7 @@ public class ConnectionsLoad {
                     (String) sqlConf.get("user"),
                     (String) sqlConf.get("mdp"));
         } else {
-            Bukkit.getLogger().warning(MainCore.prefix + "MariaDB config not found, disabling the plugin.");
+            Bukkit.getLogger().warning(MainCore.PREFIX + "MariaDB config not found, disabling the plugin.");
         }
         return null;
     }

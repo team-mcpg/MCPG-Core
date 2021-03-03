@@ -16,7 +16,7 @@ public class MainCore extends JavaPlugin {
     private static JSONObject configRoot;
     private static MariaDB mariaDB;
 
-    public static String prefix = "[MCPG] ";
+    public static String PREFIX = "[MCPG] ";
 
     @Override
     public void onEnable() {
@@ -36,7 +36,7 @@ public class MainCore extends JavaPlugin {
         try {
             configRoot = (JSONObject) new JSONParser().parse(new FileReader("plugins/MCPG-Core/config.json"));
         } catch (IOException | ParseException e) {
-            Bukkit.getLogger().warning(MainCore.prefix + "Config not found, disabling the plugin.");
+            Bukkit.getLogger().warning(MainCore.PREFIX + "Config not found, disabling the plugin.");
         }
     }
 
