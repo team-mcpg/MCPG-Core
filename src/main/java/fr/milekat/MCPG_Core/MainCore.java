@@ -2,6 +2,7 @@ package fr.milekat.MCPG_Core;
 
 import fr.milekat.MCPG_Core.db.ConnectionsLoad;
 import fr.milekat.MCPG_Core.db.MariaDB;
+import fr.milekat.MCPG_Core.db.SQLKeepalive;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.json.simple.JSONObject;
@@ -25,6 +26,7 @@ public class MainCore extends JavaPlugin {
         //  Load db connections
         mariaDB = ConnectionsLoad.getMariaDBConnections();
         if (mariaDB!=null) mariaDB.connection();
+        new SQLKeepalive(this);
     }
 
     @Override
